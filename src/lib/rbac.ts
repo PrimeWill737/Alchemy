@@ -15,6 +15,9 @@ const CUSTOMER_DELETE_LEVELS: PermissionLevel[] = ["standard", "elevated", "full
 /** Tiers that may edit the org-wide lead source list (super admin always may). */
 const LEAD_SOURCE_CONFIG_LEVELS: PermissionLevel[] = ["standard", "elevated", "full"];
 
+/** Tiers that may change lead pipeline status (sales roles with manage:leads). */
+const LEAD_STATUS_UPDATE_LEVELS: PermissionLevel[] = ["limited", "standard", "elevated", "full"];
+
 const rolePermissions: Record<UserRole, Permission[]> = {
   super_admin: [
     "manage:users",
@@ -68,6 +71,23 @@ export function canManageLeadSources(role: UserRole, permissionLevel?: Permissio
   if (!hasPermission(role, "manage:leads")) return false;
   const level = permissionLevel ?? "read_only";
   return LEAD_SOURCE_CONFIG_LEVELS.includes(level);
+}
+
+/** Change lead status in the pipeline table (not read-only / limited-only viewers). */
+export function canUpdateLeadStatus(role: UserRole, permissionLevel?: PermissionLevel) {
+  if (role === "super_admin") return true;
+  if (!hasPermission(role, "manage:leads")) return false;
+  const level = permissionLevel ?? "read_only";
+  return LEAD_STATUS_UPDATE_LEVELS.includes(level);
+}
+
+/** Remove leads from the pipeline (same tiers as customer delete). */
+export function canDeleteLead(role: UserRole, permissionLevel?: PermissionLevel) {
+  return canDeleteCustomer(role, permissionLevel);
+}
+
+export function leadStatusLabel(status: string) {
+  return status.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 export function roleLabel(role: UserRole) {

@@ -76,6 +76,8 @@ type CrmState = {
   setMessageStatus: (id: string, status: InboxMessageStatus) => void;
   removeMessage: (id: string) => void;
   addLead: (lead: Lead) => void;
+  updateLeadStatus: (leadId: string, status: Lead["status"]) => void;
+  removeLead: (leadId: string) => void;
   addCustomer: (customer: Customer) => void;
   removeCustomer: (customerId: string) => void;
   addTask: (task: Task) => void;
@@ -294,6 +296,14 @@ export const useCrmStore = create<CrmState>((set) => ({
       messages: state.messages.filter((m) => m.id !== id),
     })),
   addLead: (lead) => set((state) => ({ leads: [lead, ...state.leads] })),
+  updateLeadStatus: (leadId, status) =>
+    set((state) => ({
+      leads: state.leads.map((lead) => (lead.id === leadId ? { ...lead, status } : lead)),
+    })),
+  removeLead: (leadId) =>
+    set((state) => ({
+      leads: state.leads.filter((lead) => lead.id !== leadId),
+    })),
   addCustomer: (customer) => set((state) => ({ customers: [customer, ...state.customers] })),
   removeCustomer: (customerId) =>
     set((state) => ({

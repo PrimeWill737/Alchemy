@@ -68,6 +68,21 @@ export async function createLead(input: CreateLeadInput): Promise<Lead> {
   return rowToLead(row);
 }
 
+export async function updateLeadStatus(
+  organizationId: string,
+  leadId: string,
+  status: LeadStatus,
+): Promise<Lead | null> {
+  const { rows } = await query<LeadRow>(
+    `UPDATE leads
+     SET status = $3::lead_status, updated_at = NOW()
+     WHERE id = $1::uuid AND organization_id = $2::uuid AND deleted_at IS NULL
+     RETURNING id, name, source, status::text, value::text, assigned_to, created_at`,
+    [leadId, organizationId, status],
+  );
+  return rows[0] ? rowToLead(rows[0]) : null;
+}
+
 export async function softDeleteLead(organizationId: string, leadId: string): Promise<boolean> {
   const { rowCount } = await query(
     `UPDATE leads SET deleted_at = NOW(), updated_at = NOW()
