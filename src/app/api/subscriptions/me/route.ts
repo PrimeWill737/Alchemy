@@ -26,46 +26,66 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ hasAccess: true, mode: "super_admin" as const });
   }
 
-  let access = await getUserOrgAccess(session.userId);
-  if (!access) {
-    return NextResponse.json({ hasAccess: false, deactivated: true as const }, { status: 200 });
-  }
+  try {
+    let access = await getUserOrgAccess(session.userId);
+    if (!access) {
+      return NextResponse.json({ hasAccess: false, deactivated: true as const }, { status: 200 });
+    }
 
-  await syncSubscriptionLifecycleForOrganization(access.organizationId);
+    /* Non-admin members: skip heavy billing sync; only verify account is still active. */
+    if (session.role !== "admin") {
+      return NextResponse.json({
+        hasAccess: true,
+        mode: "member" as const,
+      });
+    }
 
-  access = await getUserOrgAccess(session.userId);
-  if (!access) {
-    return NextResponse.json({ hasAccess: false, deactivated: true as const }, { status: 200 });
-  }
+    await syncSubscriptionLifecycleForOrganization(access.organizationId);
 
-  const sub = await getSubscriptionByOrganizationId(access.organizationId);
-  if (!sub) {
+    access = await getUserOrgAccess(session.userId);
+    if (!access) {
+      return NextResponse.json({ hasAccess: false, deactivated: true as const }, { status: 200 });
+    }
+
+    const sub = await getSubscriptionByOrganizationId(access.organizationId);
+    if (!sub) {
+      return NextResponse.json({
+        hasAccess: true,
+        legacyWorkspace: true as const,
+      });
+    }
+
+    const { rows: todayRows } = await query<{ d: string }>(`SELECT CURRENT_DATE::text AS d`);
+    const today = todayRows[0]?.d ?? utcDateString();
+
+    const hasAccess = subscriptionRecordGrantsAppAccess(sub, today);
+    const billing = getSubscriptionBillingUiFlags(sub, today);
+    const planBenefits = await getSignupPlanFeatureLinesById(sub.signupPlanId);
+
     return NextResponse.json({
-      hasAccess: true,
-      legacyWorkspace: true as const,
+      hasAccess,
+      subscription: {
+        id: sub.id,
+        status: sub.status,
+        planName: sub.planNameSnapshot,
+        amountNgn: sub.amountNgn,
+        isMonthly: sub.isMonthly,
+        periodStart: sub.periodStart,
+        periodEnd: sub.periodEnd,
+        transferReference: sub.transferReference,
+        planBenefits,
+      },
+      billing,
     });
+  } catch (e) {
+    console.error("[subscriptions/me]", e);
+    return NextResponse.json(
+      {
+        hasAccess: true,
+        mode: "degraded" as const,
+        error: "Billing status could not be loaded",
+      },
+      { status: 200 },
+    );
   }
-
-  const { rows: todayRows } = await query<{ d: string }>(`SELECT CURRENT_DATE::text AS d`);
-  const today = todayRows[0]?.d ?? utcDateString();
-
-  const hasAccess = subscriptionRecordGrantsAppAccess(sub, today);
-  const billing = getSubscriptionBillingUiFlags(sub, today);
-  const planBenefits = await getSignupPlanFeatureLinesById(sub.signupPlanId);
-
-  return NextResponse.json({
-    hasAccess,
-    subscription: {
-      id: sub.id,
-      status: sub.status,
-      planName: sub.planNameSnapshot,
-      amountNgn: sub.amountNgn,
-      isMonthly: sub.isMonthly,
-      periodStart: sub.periodStart,
-      periodEnd: sub.periodEnd,
-      transferReference: sub.transferReference,
-      planBenefits,
-    },
-    billing,
-  });
 }

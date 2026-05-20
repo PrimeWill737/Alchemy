@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { useBillingGate } from "@/context/billing-gate-context";
+import { fetchWithTimeout } from "@/lib/fetch-with-timeout";
 import { Skeleton, WireCard } from "@/components/ui/skeleton";
 import styles from "@/app/module-pages.module.scss";
 import wbStyles from "./workspace-billing.module.scss";
@@ -65,7 +66,7 @@ export function WorkspaceBilling({ autoRedirectWhenClear = true }: Props) {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/subscriptions/me", { credentials: "include" });
+      const res = await fetchWithTimeout("/api/subscriptions/me", { credentials: "include" }, 12_000);
       const data = (await res.json().catch(() => ({}))) as MeResponse;
       if (data.deactivated) {
         await fetch("/api/auth/logout", { method: "POST" });

@@ -36,7 +36,7 @@ export function AppShell({ children, heading, subheading }: AppShellProps) {
 
   /** Locked until we know subscription is OK: loading (unknown), or confirmed unpaid/blocked. */
   const billingLocked =
-    currentUser.role !== "super_admin" &&
+    currentUser.role === "admin" &&
     !billingSnapshot.exempt &&
     (billingSnapshot.loading || billingSnapshot.blocked);
 

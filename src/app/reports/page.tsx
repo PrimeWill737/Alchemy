@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { fetchWithTimeout } from "@/lib/fetch-with-timeout";
 import { AppShell } from "@/components/layout/app-shell";
 import { Card } from "@/components/ui/card";
 import { RevenueChart } from "@/components/charts/revenue-chart";
@@ -21,7 +22,7 @@ export default function ReportsPage() {
   useEffect(() => {
     if (!currentUser.ready) return;
     let cancelled = false;
-    fetch("/api/reports", { credentials: "include" })
+    fetchWithTimeout("/api/reports", { credentials: "include" }, 12_000)
       .then((res) => (res.ok ? res.json() : null))
       .then((data: ReportsPayload | null) => {
         if (cancelled || !data?.monthlyRevenue) return;

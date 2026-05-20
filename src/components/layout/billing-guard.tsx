@@ -47,8 +47,11 @@ export function BillingGuard() {
       return;
     }
 
+    /* Billing gate applies to workspace admins only — team members must not be redirected to billing. */
+    if (currentUser.role !== "admin") return;
+
     /*
-     * While subscription status is loading, keep users off dashboard/tools so admins never see a flash
+     * While subscription status is loading, keep admins off dashboard/tools so they never see a flash
      * of full CRM before we know billing state.
      */
     if (snapshot.loading) {

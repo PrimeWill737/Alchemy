@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import { useCurrentUser } from "@/hooks/use-current-user";
+import { fetchWithTimeout } from "@/lib/fetch-with-timeout";
 
 export type BillingGateSnapshot = {
   loading: boolean;
@@ -60,11 +61,34 @@ export function BillingGateProvider({ children }: { children: React.ReactNode })
       return;
     }
 
+    /* Team members only need deactivation check — not billing lock. */
+    if (currentUser.role !== "admin") {
+      if (!subscriptionGateKnownRef.current) {
+        setSnapshot((s) => ({ ...s, loading: true }));
+      }
+      try {
+        const res = await fetchWithTimeout("/api/subscriptions/me", { credentials: "include" }, 12_000);
+        const data = (await res.json().catch(() => ({}))) as {
+          deactivated?: boolean;
+        };
+        subscriptionGateKnownRef.current = true;
+        if (data.deactivated) {
+          setSnapshot({ loading: false, blocked: false, deactivated: true, exempt: false });
+          return;
+        }
+        setSnapshot({ loading: false, blocked: false, deactivated: false, exempt: true });
+      } catch {
+        subscriptionGateKnownRef.current = true;
+        setSnapshot({ loading: false, blocked: false, deactivated: false, exempt: true });
+      }
+      return;
+    }
+
     if (!subscriptionGateKnownRef.current) {
       setSnapshot((s) => ({ ...s, loading: true }));
     }
     try {
-      const res = await fetch("/api/subscriptions/me", { credentials: "include" });
+      const res = await fetchWithTimeout("/api/subscriptions/me", { credentials: "include" }, 12_000);
       const data = (await res.json().catch(() => ({}))) as {
         hasAccess?: boolean;
         deactivated?: boolean;
@@ -78,7 +102,12 @@ export function BillingGateProvider({ children }: { children: React.ReactNode })
         return;
       }
 
-      if (data.mode === "demo" || data.legacyWorkspace) {
+      if (
+        data.mode === "demo" ||
+        data.mode === "degraded" ||
+        data.legacyWorkspace ||
+        data.mode === "super_admin"
+      ) {
         subscriptionGateKnownRef.current = true;
         setSnapshot({ loading: false, blocked: false, deactivated: false, exempt: true });
         return;
