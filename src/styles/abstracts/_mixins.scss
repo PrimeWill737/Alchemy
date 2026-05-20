@@ -1,0 +1,10 @@
+@mixin card {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+@mixin section-spacing {
+  padding: 1rem;
+  margin-bottom: 1rem;
+}

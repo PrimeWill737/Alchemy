@@ -1,0 +1,32 @@
+.badge {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+/* Theme-aware fills so dark mode keeps label text readable (no dark-on-dark pills). */
+.default {
+  background: color-mix(in srgb, var(--primary) 18%, var(--surface));
+  border-color: color-mix(in srgb, var(--primary) 36%, var(--border-color));
+  color: var(--brand-text);
+}
+
+.success {
+  background: color-mix(in srgb, var(--success) 24%, var(--surface));
+  border-color: color-mix(in srgb, var(--success) 48%, var(--border-color));
+  color: var(--text-primary);
+}
+
+.warning {
+  background: color-mix(in srgb, var(--warning) 20%, var(--surface));
+  border-color: color-mix(in srgb, var(--warning) 42%, var(--border-color));
+  color: var(--text-primary);
+}
+
+.danger {
+  background: color-mix(in srgb, var(--danger) 18%, var(--surface));
+  border-color: color-mix(in srgb, var(--danger) 40%, var(--border-color));
+  color: var(--text-primary);
+}

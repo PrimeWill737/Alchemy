@@ -1,0 +1,59 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.8rem;
+}
+
+.field span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--brand-text);
+}
+
+.field input {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.65rem 0.75rem;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.field input:focus {
+  border-color: rgba(92, 166, 102, 0.66);
+  box-shadow: 0 0 0 3px rgba(92, 166, 102, 0.16);
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.inputWrap input {
+  width: 100%;
+}
+
+.passwordField input {
+  padding-right: 4.1rem;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 0.55rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: var(--brand-text);
+  font-size: 0.83rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.passwordToggle:hover {
+  color: var(--accent);
+}
+
+.field small {
+  color: var(--danger);
+}

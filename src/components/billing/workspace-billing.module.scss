@@ -1,0 +1,127 @@
+.management {
+  border: 1px solid color-mix(in srgb, var(--accent, #3d7a4d) 35%, var(--border-color));
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--surface) 94%, var(--accent) 6%),
+    color-mix(in srgb, var(--surface-muted) 92%, var(--accent) 4%)
+  );
+  box-shadow: var(--shadow-sm, 0 8px 28px rgba(0, 0, 0, 0.12));
+}
+
+.management h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.kicker {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-text, #2d5a3d);
+}
+
+.durationBox {
+  margin: 0 0 1.1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border: 1px solid var(--border-color);
+}
+
+.durationLabel {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+.durationMain {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+.durationSub {
+  margin: 0.45rem 0 0;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.benefitsTitle {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.benefitsList {
+  margin: 0;
+  padding-left: 1.15rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.benefitsList li {
+  margin-bottom: 0.35rem;
+}
+
+.benefitsEmpty {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+  align-items: center;
+}
+
+.renewalPanel {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--border-color);
+}
+
+.renewalPanel h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.bankList {
+  margin: 0 0 1rem;
+  padding-left: 1.15rem;
+  line-height: 1.7;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.statusNote {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+.bankCard h2 {
+  margin: 0 0 0.5rem;
+}
+
+.mtCard {
+  margin-top: 1.25rem;
+}

@@ -1,0 +1,17 @@
+.select {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.3rem 0.45rem;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--border-color) 80%, transparent);
+  background: color-mix(in srgb, var(--surface) 95%, transparent);
+  color: var(--text-primary);
+  cursor: pointer;
+  min-width: 4.25rem;
+}
+
+.select:focus {
+  outline: none;
+  border-color: rgba(61, 122, 77, 0.55);
+  box-shadow: 0 0 0 2px rgba(61, 122, 77, 0.12);
+}

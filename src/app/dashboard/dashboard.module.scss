@@ -1,0 +1,65 @@
+.topBanner {
+  border-radius: 18px;
+  border: 1px solid rgba(86, 133, 76, 0.38);
+  background: linear-gradient(135deg, rgba(61, 122, 77, 0.95), rgba(97, 152, 91, 0.95));
+  color: #f8fafc;
+  padding: 1.1rem 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.topBanner h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.topBanner p {
+  margin: 0.3rem 0 0;
+  color: rgba(248, 250, 252, 0.9);
+}
+
+.quickStats {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.quickStat {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.14);
+  padding: 0.65rem 0.75rem;
+}
+
+.quickStat span {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(248, 250, 252, 0.86);
+}
+
+.quickStat strong {
+  font-size: 1.15rem;
+}
+
+.activityTitle {
+  margin-bottom: 0.6rem;
+}
+
+/* Super-admin 2×2: Executive Controls, Org Health, Activity Feed, Forecast */
+.commandGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+  .commandGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .quickStats {
+    grid-template-columns: 1fr;
+  }
+}

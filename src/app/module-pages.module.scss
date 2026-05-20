@@ -1,0 +1,137 @@
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.kpiGrid > *,
+.splitGrid > * {
+  min-width: 0;
+}
+
+.kpiLabel {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.kpiValue {
+  margin-top: 0.45rem;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #2f6a3f 0%, #5b9f64 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.splitGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.25rem;
+}
+
+.list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.listItem {
+  min-width: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(61, 122, 77, 0.08) 0%,
+      rgba(97, 152, 91, 0.06) 50%,
+      rgba(205, 229, 180, 0.2) 100%
+    ),
+    color-mix(in srgb, var(--surface) 92%, transparent);
+  transition: transform 0.15s ease;
+}
+
+.listItem:hover {
+  transform: translateY(-1px);
+}
+
+.listItem strong {
+  display: block;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+.listItem p {
+  margin: 0.35rem 0 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metaLine {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.splitGrid form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.splitGrid form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.splitGrid form select {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface) 86%, #fff 14%);
+  color: var(--text-primary);
+  padding: 0.65rem 0.75rem;
+}
+
+.splitGrid form small {
+  color: #b42318;
+}
+
+@media (max-width: 1024px) {
+  .kpiGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .splitGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .kpiGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+}
+
+:global([data-theme="dark"]) .kpiValue {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: var(--accent);
+}

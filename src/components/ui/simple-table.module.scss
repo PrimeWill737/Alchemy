@@ -1,0 +1,41 @@
+.wrapper {
+  overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(8px);
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.8rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table th {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: linear-gradient(
+    90deg,
+    rgba(61, 122, 77, 0.16) 0%,
+    rgba(97, 152, 91, 0.15) 100%
+  );
+}
+
+.table tbody tr:hover {
+  background: color-mix(in srgb, var(--surface-muted) 70%, rgba(97, 152, 91, 0.2) 30%);
+}

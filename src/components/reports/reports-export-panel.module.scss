@@ -1,0 +1,45 @@
+.list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.exportBtn {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  line-height: 1.4;
+  border-radius: 12px;
+  text-wrap: balance;
+  border: 1px solid var(--border-color);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(61, 122, 77, 0.08) 0%,
+      rgba(97, 152, 91, 0.06) 50%,
+      rgba(205, 229, 180, 0.15) 100%
+    ),
+    color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--text-primary);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.exportBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border-color));
+}
+
+.exportBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}

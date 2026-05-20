@@ -1,0 +1,30 @@
+.form {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.success {
+  margin-top: 0.75rem;
+  color: #3d7a4d;
+  font-weight: 600;
+}
+
+.inlineLinks {
+  margin-top: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.inlineLinks a {
+  color: #355d3f;
+  font-weight: 600;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #64748b;
+}

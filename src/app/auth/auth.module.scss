@@ -1,0 +1,176 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.4rem;
+  padding-top: 3.5rem;
+  background:
+    radial-gradient(circle at 0% 0%, var(--shell-tint-1), transparent 35%),
+    radial-gradient(circle at 100% 100%, var(--shell-tint-3), transparent 30%),
+    var(--bg);
+}
+
+.themeBar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+}
+
+.wrapper {
+  width: min(560px, 100%);
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--brand-text);
+  text-decoration: none;
+  width: fit-content;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.subheading {
+  margin: 0.55rem 0 1.2rem;
+  color: var(--text-secondary);
+}
+
+.formGrid {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.selectField {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.selectField span {
+  font-size: 0.9rem;
+  color: var(--brand-text);
+  font-weight: 600;
+}
+
+.selectField select {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  padding: 0.68rem 0.75rem;
+}
+
+.planFieldset {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.planFieldset legend {
+  padding: 0 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--brand-text);
+}
+
+.planOptions {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.planOption {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  cursor: pointer;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+.planOption input {
+  margin-top: 0.2rem;
+}
+
+.planOption span strong {
+  display: block;
+}
+
+.planOptionMeta {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.planHint {
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.successText {
+  margin-top: 0.8rem;
+  color: #166534;
+  font-weight: 600;
+}
+
+.errorText {
+  margin-top: 0.8rem;
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.textButton {
+  border: none;
+  background: transparent;
+  color: var(--brand-text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.linksRow {
+  margin-top: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.92rem;
+  flex-wrap: wrap;
+}
+
+.linksRow a {
+  color: var(--brand-text);
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 1rem;
+    padding-top: 3.25rem;
+    place-items: start center;
+  }
+
+  .themeBar {
+    top: 0.65rem;
+    right: 0.65rem;
+  }
+}

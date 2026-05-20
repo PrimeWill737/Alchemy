@@ -1,0 +1,682 @@
+.page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+.container {
+  width: min(1200px, min(92vw, 100% - 1.5rem));
+  margin: 0 auto;
+  padding: 0 0.75rem;
+}
+
+.nav {
+  padding: 1.25rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.65rem;
+  border-bottom: 1px solid var(--landing-nav-rule);
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--brand-gradient-start), var(--brand-gradient-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.link {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--border-color);
+  background: var(--pill-bg);
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--pill-text);
+}
+
+.hero {
+  padding: 4.5rem 0 3rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.5rem;
+}
+
+.heroContent {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--surface) 92%, transparent),
+    color-mix(in srgb, var(--surface-muted) 88%, transparent)
+  );
+  border: 1px solid var(--border-color);
+  border-radius: 22px;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  box-shadow: var(--shadow-sm);
+}
+
+.heroTag {
+  display: inline-block;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  color: var(--brand-text);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.65rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-top: 0.65rem;
+}
+
+.hero p {
+  margin-top: 0.9rem;
+  color: var(--text-secondary);
+  max-width: 58ch;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.btnPrimary,
+.btnGhost {
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+}
+
+.btnPrimary {
+  background: var(--hero-gradient);
+  color: var(--on-primary);
+  box-shadow: var(--shadow-btn-primary);
+}
+
+.btnGhost {
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+  color: var(--brand-text);
+}
+
+.highlightPanel {
+  background: var(--landing-highlight-gradient);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border-color));
+  border-radius: 18px;
+  padding: 1.1rem;
+  box-shadow: var(--shadow-highlight-panel);
+  color: var(--on-primary);
+}
+
+.heroVisual {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stats {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.stat {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.14);
+  padding: 0.8rem;
+}
+
+.value {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--on-primary);
+}
+
+.label {
+  color: color-mix(in srgb, var(--on-primary) 85%, transparent);
+  font-size: 0.8rem;
+}
+
+.filterBar {
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-landing-filter);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+}
+
+.filterBar div {
+  padding: 0.8rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--brand-text);
+}
+
+.filterBar div + div {
+  border-left: 1px solid var(--border-color);
+}
+
+.section {
+  padding: 1rem 0 3.2rem;
+}
+
+.sectionSoft {
+  background: var(--surface-muted);
+  border-radius: 22px;
+  padding: 1.4rem 1.2rem 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.sectionNeutral {
+  background: var(--surface);
+  border-radius: 22px;
+  border: 1px solid var(--border-color);
+  padding: 1.4rem 1.2rem 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.trustRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  color: var(--brand-text);
+}
+
+.trustRow span {
+  font-weight: 700;
+}
+
+.trustRow p {
+  color: var(--text-secondary);
+}
+
+.sectionHeader {
+  margin-bottom: 1rem;
+  max-width: 780px;
+}
+
+.sectionHeader h2 {
+  font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+  letter-spacing: -0.02em;
+}
+
+.sectionHeader p {
+  color: var(--text-secondary);
+  margin-top: 0.45rem;
+}
+
+.kicker {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+.featureSplit {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.storyCard {
+  border-radius: 18px;
+  background: var(--landing-story-gradient);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+}
+
+.storyCard p {
+  margin-top: 0.4rem;
+  color: var(--text-muted);
+}
+
+.storyCard ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1rem;
+  color: var(--text-muted);
+  display: grid;
+  gap: 0.25rem;
+}
+
+.metricCard {
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  display: grid;
+  align-content: center;
+}
+
+.metricCard p {
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+}
+
+.metricCard strong {
+  font-size: 1.8rem;
+  color: var(--brand-text);
+  margin-top: 0.2rem;
+}
+
+.metricCard small {
+  margin-top: 0.35rem;
+  color: var(--text-subtle);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.cardPrimary,
+.cardSecondary {
+  border-radius: 16px;
+  padding: 0.9rem;
+}
+
+.cardPrimary {
+  background: var(--landing-soft-tint);
+  border: 1px solid var(--border-color);
+}
+
+.cardSecondary {
+  background: var(--invert-card-bg);
+  color: var(--invert-card-text);
+  border: 1px solid var(--invert-card-border);
+}
+
+.cardPrimary p,
+.cardSecondary p {
+  margin-top: 0.3rem;
+}
+
+.cardPrimary p {
+  color: var(--text-muted);
+}
+
+.cardSecondary p {
+  color: var(--invert-card-muted);
+}
+
+.moduleGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.previewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.previewCard {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+  box-shadow: var(--shadow-landing-preview);
+}
+
+.previewImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.moduleCard {
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 0.85rem;
+}
+
+.moduleCard h3 {
+  font-size: 1rem;
+}
+
+.moduleCard p {
+  margin-top: 0.3rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.stepCard {
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1rem;
+  background: var(--surface);
+}
+
+.stepCard span {
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.stepCard h3 {
+  margin-top: 0.45rem;
+}
+
+.stepCard p {
+  margin-top: 0.35rem;
+  color: var(--text-muted);
+}
+
+.splitPanel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.panelCard {
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+  padding: 1rem;
+}
+
+.panelCard ul {
+  margin: 0.65rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--text-muted);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.testimonialCard {
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+  padding: 1rem;
+}
+
+.testimonialCard p {
+  color: var(--text-muted);
+}
+
+.testimonialCard div {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.testimonialCard span {
+  color: var(--text-subtle);
+  font-size: 0.9rem;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.pricingCard,
+.pricingCardFeatured {
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.pricingCard {
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+}
+
+.pricingCardFeatured {
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border-color));
+  background: var(--pricing-featured-gradient);
+  box-shadow: var(--shadow-pricing-featured);
+}
+
+.price {
+  margin-top: 0.4rem;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.price span {
+  font-size: 0.9rem;
+  color: var(--text-subtle);
+  margin-left: 0.2rem;
+}
+
+.pricingCard ul,
+.pricingCardFeatured ul {
+  margin: 0.7rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--text-muted);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.pricingCta {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--brand-text);
+  text-decoration: none;
+}
+
+.pricingCta:hover {
+  text-decoration: underline;
+}
+
+.faqList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.faqItem {
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 0.9rem;
+}
+
+.faqItem p {
+  margin-top: 0.35rem;
+  color: var(--text-muted);
+}
+
+.finalCta {
+  margin: 0 0 2rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--border-color));
+  background: var(--landing-final-cta-bg);
+  border-radius: 20px;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--on-primary);
+}
+
+.finalCta h2 {
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+}
+
+.finalCta p {
+  color: color-mix(in srgb, var(--on-primary) 90%, transparent);
+  margin-top: 0.45rem;
+}
+
+.footer {
+  padding: 0.9rem 0 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.imageStrip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0.5rem 0 1.1rem;
+}
+
+.stripThumb {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+}
+
+.stripThumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.wideVisual {
+  margin: 0.75rem 0 1.25rem;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.wideVisual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.featureWithVisual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.securityBlurb {
+  text-align: center;
+  max-width: 52ch;
+  margin: 0 auto 1rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.oneLiner {
+  margin-top: 0.35rem;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.moduleTitleOnly h3 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+@media (max-width: 960px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 2.2rem;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .filterBar {
+    grid-template-columns: 1fr 1fr;
+    border-radius: 18px;
+  }
+
+  .featureSplit {
+    grid-template-columns: 1fr;
+  }
+
+  .featureWithVisual {
+    grid-template-columns: 1fr;
+  }
+
+  .imageStrip {
+    grid-template-columns: 1fr;
+  }
+
+  .trustRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .moduleGrid,
+  .previewGrid,
+  .stepsGrid,
+  .pricingGrid,
+  .faqList,
+  .splitPanel,
+  .testimonialGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .filterBar {
+    grid-template-columns: 1fr;
+    border-radius: 14px;
+  }
+
+  .filterBar div + div {
+    border-left: none;
+    border-top: 1px solid var(--border-color);
+  }
+}

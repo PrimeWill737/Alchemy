@@ -1,0 +1,374 @@
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.snapshotStats {
+  margin-top: 0.65rem;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.summaryStat {
+  min-width: 0;
+  border-radius: 12px;
+  padding: 0.95rem 1.05rem;
+  background: color-mix(in srgb, var(--primary) 10%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--primary) 22%, var(--border-color));
+}
+
+.summaryStat span {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+  overflow-wrap: break-word;
+  color: var(--text-secondary);
+}
+
+.summaryStat strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--brand-text);
+}
+
+.logPanel {
+  max-height: min(520px, 58vh);
+  overflow-y: auto;
+  padding: 0.35rem 0.5rem 0.5rem 0;
+  margin-top: 0.85rem;
+}
+
+.logItem {
+  position: relative;
+  padding: 1rem 1.05rem 1.05rem 1.15rem;
+  margin-bottom: 0.85rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border-color) 80%, transparent);
+  border-left: 4px solid var(--primary);
+}
+
+.logItem:last-child {
+  margin-bottom: 0;
+}
+
+.logItemHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.75rem;
+  margin-bottom: 0.45rem;
+}
+
+.logTime {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.logSummary {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+}
+
+.logActors {
+  margin: 0.6rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--text-primary) 52%, var(--text-secondary) 48%);
+}
+
+.rosterScroll {
+  overflow-x: auto;
+  max-width: 100%;
+  margin-top: 0.75rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rosterTable {
+  width: 100%;
+  min-width: 960px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  table-layout: auto;
+}
+
+.rosterTable th,
+.rosterTable td {
+  text-align: left;
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.rosterTable td.layerCell {
+  min-width: 10rem;
+}
+
+.rosterEmail {
+  max-width: 14rem;
+  word-break: break-word;
+}
+
+.badgeInTable {
+  flex-shrink: 0;
+  white-space: nowrap;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.currencyCell {
+  min-width: 140px;
+}
+
+.actionsCell {
+  width: 1%;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.rosterTable th {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.quickLinks {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.quickLink {
+  display: block;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+  color: var(--brand-text);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.quickLink:hover {
+  background: color-mix(in srgb, var(--primary) 14%, var(--surface));
+  transform: translateX(2px);
+}
+
+.subsectionTitle {
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.planCatalog {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--border-color) 90%, var(--surface));
+}
+
+.planCatalog .subsectionTitle {
+  margin-top: 0;
+  margin-bottom: 0.55rem;
+}
+
+.planFormGrid {
+  display: grid;
+  gap: 0.95rem;
+  margin-top: 1.1rem;
+}
+
+.planCheck {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.planCheck input {
+  margin-top: 0.2rem;
+  accent-color: var(--primary);
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+}
+
+.planFeatures {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.planFeatures span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--brand-text);
+}
+
+.planTextarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+  resize: vertical;
+}
+
+.planActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.planError {
+  color: #b91c1c;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.planList {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.planRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem 0.85rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  font: inherit;
+  color: inherit;
+}
+
+.planRow:hover {
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--border-color));
+}
+
+.planRowMain {
+  flex: 1 1 14rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.planRowActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+
+.planRowName {
+  font-weight: 700;
+}
+
+.planRowMeta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.layersCard .layersRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.layersCard .layersRow strong {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.layersCard .layersBadgeWrap {
+  flex: 0 0 auto;
+}
+
+.fullBleedSection {
+  margin-top: 0;
+}
+
+.controlSplitGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.9fr) minmax(280px, 1fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: start;
+}
+
+.settingsStack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+  width: 100%;
+}
+
+.settingsStack h2 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+  letter-spacing: -0.02em;
+}
+
+.planPanelLead {
+  margin: 0 0 0.85rem;
+  max-width: 62rem;
+  line-height: 1.55;
+}
+
+.cardIntro {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  max-width: 48rem;
+  line-height: 1.55;
+}
+
+.snapshotQuickHeading {
+  margin-top: 1.5rem;
+  margin-bottom: 0.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.layersStack {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.layersListItem {
+  padding: 1.05rem 1.15rem;
+}
+
+@media (max-width: 900px) {
+  .summaryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .controlSplitGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

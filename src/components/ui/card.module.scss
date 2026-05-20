@@ -1,0 +1,16 @@
+.card {
+  min-width: 0;
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--card-bg-mix) 88%, transparent) 0%,
+      color-mix(in srgb, var(--surface-muted) 75%, var(--surface)) 55%,
+      color-mix(in srgb, var(--surface-muted) 92%, transparent) 100%
+    ),
+    var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.25rem 1.35rem;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-primary);
+}

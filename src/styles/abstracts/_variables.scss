@@ -1,0 +1,102 @@
+:root {
+  --primary: #3d7a4d;
+  --secondary: #355d3f;
+  --accent: #5ca666;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --bg: #f4f8ef;
+  --surface: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #5b6b57;
+  --border-color: rgba(113, 145, 99, 0.24);
+  --surface-muted: #eef5e6;
+  --shadow-sm: 0 10px 25px rgba(69, 99, 61, 0.12);
+  --shadow-lg: 0 26px 60px rgba(69, 99, 61, 0.2);
+  --hero-gradient: linear-gradient(135deg, #3d7a4d 0%, #5ca666 100%);
+  --brand-text: #355d3f;
+  --brand-gradient-start: #2f6a3f;
+  --brand-gradient-end: #5b9f64;
+  --card-bg: #ffffff;
+  --card-bg-mix: rgba(255, 255, 255, 0.94);
+  --input-bg: #ffffff;
+  --pill-bg: #ffffff;
+  --pill-text: #2f6a3f;
+  --overlay-scrim: rgba(15, 23, 20, 0.45);
+  --shell-tint-1: rgba(95, 141, 86, 0.18);
+  --shell-tint-2: rgba(123, 170, 105, 0.15);
+  --shell-tint-3: rgba(196, 220, 178, 0.18);
+  --text-muted: #4b5563;
+  --text-subtle: #6b7280;
+  --on-primary: #ffffff;
+  --landing-nav-rule: rgba(134, 153, 122, 0.25);
+  --landing-highlight-gradient: linear-gradient(155deg, #446f3f 0%, #5f8d56 55%, #7baa69 100%);
+  --landing-story-gradient: linear-gradient(140deg, #f7fbf1 0%, #eaf5de 100%);
+  --landing-soft-tint: #f7fbf1;
+  --invert-card-bg: #355d3f;
+  --invert-card-text: #f8fafc;
+  --invert-card-border: rgba(53, 93, 63, 0.32);
+  --invert-card-muted: rgba(248, 250, 252, 0.9);
+  --pricing-featured-gradient: linear-gradient(
+    160deg,
+    rgb(241, 249, 232) 0%,
+    rgb(223, 240, 205) 55%,
+    rgb(205, 229, 180) 100%
+  );
+  --shadow-landing-filter: 0 10px 20px rgba(69, 99, 61, 0.12);
+  --shadow-landing-preview: 0 12px 24px rgba(69, 99, 61, 0.1);
+  --shadow-btn-primary: 0 12px 24px rgba(60, 105, 56, 0.25);
+  --shadow-btn-primary-hover: 0 16px 30px rgba(61, 122, 77, 0.35);
+  --shadow-highlight-panel: 0 16px 35px rgba(59, 86, 50, 0.26);
+  --shadow-pricing-featured: 0 14px 30px rgba(65, 101, 57, 0.18);
+  --landing-final-cta-bg: linear-gradient(
+    135deg,
+    rgba(61, 122, 77, 0.96) 0%,
+    rgba(97, 152, 91, 0.94) 100%
+  );
+}
+
+[data-theme="dark"] {
+  --primary: #6bbf7a;
+  --secondary: #a7d4b0;
+  --accent: #7dce8c;
+  --bg: #152019;
+  --surface: #1e2c24;
+  --text-primary: #e8f0ea;
+  --text-secondary: #a8bfb0;
+  --border-color: rgba(120, 160, 130, 0.28);
+  --surface-muted: #24352c;
+  --shadow-sm: 0 10px 25px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 26px 60px rgba(0, 0, 0, 0.5);
+  --brand-text: #b8e8c4;
+  --brand-gradient-start: #6bbf7a;
+  --brand-gradient-end: #9fe0ae;
+  --card-bg: #1e2c24;
+  --card-bg-mix: rgba(30, 44, 36, 0.96);
+  --input-bg: #24352c;
+  --pill-bg: #24352c;
+  --pill-text: #b8e8c4;
+  --overlay-scrim: rgba(0, 0, 0, 0.55);
+  --shell-tint-1: rgba(60, 120, 75, 0.22);
+  --shell-tint-2: rgba(80, 140, 95, 0.18);
+  --shell-tint-3: rgba(40, 80, 55, 0.35);
+  --text-muted: #b8c9be;
+  --text-subtle: #8fa99a;
+  --on-primary: #ffffff;
+  --landing-nav-rule: rgba(120, 160, 130, 0.22);
+  --landing-highlight-gradient: linear-gradient(155deg, #2a3f32 0%, #355a42 50%, #3f6b4c 100%);
+  --landing-story-gradient: linear-gradient(140deg, #1c2a22 0%, #24352c 100%);
+  --landing-soft-tint: #1c2820;
+  --invert-card-bg: #243d30;
+  --invert-card-text: #e8f0ea;
+  --invert-card-border: rgba(120, 160, 130, 0.35);
+  --invert-card-muted: rgba(232, 240, 234, 0.9);
+  --pricing-featured-gradient: linear-gradient(160deg, #1e2c24 0%, #24352c 45%, #2a3f32 100%);
+  --shadow-landing-filter: 0 10px 20px rgba(0, 0, 0, 0.35);
+  --shadow-landing-preview: 0 12px 24px rgba(0, 0, 0, 0.4);
+  --shadow-btn-primary: 0 12px 24px rgba(0, 0, 0, 0.45);
+  --shadow-btn-primary-hover: 0 16px 34px rgba(0, 0, 0, 0.55);
+  --shadow-highlight-panel: 0 16px 35px rgba(0, 0, 0, 0.45);
+  --shadow-pricing-featured: 0 14px 30px rgba(0, 0, 0, 0.4);
+  --landing-final-cta-bg: linear-gradient(135deg, rgba(45, 90, 58, 0.98) 0%, rgba(55, 100, 70, 0.95) 100%);
+}
