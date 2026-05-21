@@ -45,6 +45,7 @@ export function BillingGateProvider({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     subscriptionGateKnownRef.current = false;
+    setSnapshot(defaultSnapshot);
   }, [currentUser.id]);
 
   const runFetch = useCallback(async () => {
@@ -125,6 +126,20 @@ export function BillingGateProvider({ children }: { children: React.ReactNode })
   useEffect(() => {
     void runFetch();
   }, [runFetch]);
+
+  /* Never leave admins in perpetual loading (e.g. hung subscription API on deploy). */
+  useEffect(() => {
+    if (!currentUser.ready || currentUser.role !== "admin") return;
+    const t = window.setTimeout(() => {
+      setSnapshot((s) =>
+        s.loading
+          ? { loading: false, blocked: false, deactivated: false, exempt: true }
+          : s,
+      );
+      subscriptionGateKnownRef.current = true;
+    }, 14_000);
+    return () => window.clearTimeout(t);
+  }, [currentUser.ready, currentUser.id, currentUser.role]);
 
   const value = useMemo(
     () => ({

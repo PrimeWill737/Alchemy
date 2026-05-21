@@ -7,6 +7,7 @@ import styles from "@/app/module-pages.module.scss";
 import dashboardStyles from "./dashboard.module.scss";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { useAdminDisplayCurrency } from "@/hooks/use-admin-display-currency";
+import { useWorkspaceDataReady } from "@/hooks/use-crm-data-sync";
 import { useCrmStore } from "@/store/use-crm-store";
 import { formatCurrency } from "@/utils/format-currency";
 import { DashboardWireframe } from "@/components/loading/module-page-wireframe";
@@ -16,7 +17,7 @@ import { isAdminLayer } from "@/lib/admin-layers";
 export default function DashboardPage() {
   const currentUser = useCurrentUser();
   const { currency } = useAdminDisplayCurrency();
-  const dataReady = useCrmStore((state) => state.dataReady);
+  const workspaceReady = useWorkspaceDataReady();
   const leads = useCrmStore((state) => state.leads);
   const deals = useCrmStore((state) => state.deals);
   const tasks = useCrmStore((state) => state.tasks);
@@ -54,7 +55,7 @@ export default function DashboardPage() {
   const pipelineValue = useMemo(() => deals.reduce((acc, deal) => acc + deal.value, 0), [deals]);
   const adminLayerCount = useMemo(() => users.filter((u) => isAdminLayer(u.role)).length, [users]);
 
-  if (!currentUser.ready || !dataReady) {
+  if (!workspaceReady) {
     return (
       <AppShell heading="Dashboard" subheading="Loading your workspace…">
         <DashboardWireframe />

@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { AppShell } from "@/components/layout/app-shell";
 import { Card } from "@/components/ui/card";
+import { useWorkspaceDataReady } from "@/hooks/use-crm-data-sync";
 import { useCrmStore } from "@/store/use-crm-store";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { useAdminDisplayCurrency } from "@/hooks/use-admin-display-currency";
@@ -21,7 +22,7 @@ const columns: { key: DealStage; title: string }[] = [
 
 export default function PipelinePage() {
   const currentUser = useCurrentUser();
-  const dataReady = useCrmStore((state) => state.dataReady);
+  const workspaceReady = useWorkspaceDataReady();
   const deals = useCrmStore((state) => state.deals);
   const { currency } = useAdminDisplayCurrency();
 
@@ -33,7 +34,7 @@ export default function PipelinePage() {
     return map;
   }, [deals]);
 
-  if (!currentUser.ready || !dataReady) {
+  if (!workspaceReady) {
     return (
       <AppShell heading="Pipeline" subheading="Loading deals…">
         <ModulePageWireframe />

@@ -37,20 +37,24 @@ export function useCrmDataSync() {
   const setActivities = useCrmStore((s) => s.setActivities);
   const setLeadSources = useCrmStore((s) => s.setLeadSources);
   const setDataReady = useCrmStore((s) => s.setDataReady);
-  const ranForUser = useRef<string | null>(null);
+  const syncedUserId = useRef<string | null>(null);
 
   useEffect(() => {
     if (!ready || !userId) {
       setDataReady(false);
-      ranForUser.current = null;
+      syncedUserId.current = null;
       return;
     }
-    if (ranForUser.current === userId) return;
-    ranForUser.current = userId;
+
+    /* Already synced for this session — avoid stuck loading after Strict Mode remount. */
+    if (syncedUserId.current === userId) {
+      setDataReady(true);
+      return;
+    }
+
     let cancelled = false;
 
     (async () => {
-      setDataReady(false);
       try {
         const [
           usersRes,
@@ -83,7 +87,10 @@ export function useCrmDataSync() {
         if (activitiesRes?.activities) setActivities(activitiesRes.activities);
         if (sourcesRes?.sources?.length) setLeadSources(sourcesRes.sources);
       } finally {
-        if (!cancelled) setDataReady(true);
+        if (!cancelled) {
+          syncedUserId.current = userId;
+          setDataReady(true);
+        }
       }
     })();
 
@@ -103,4 +110,14 @@ export function useCrmDataSync() {
     setLeadSources,
     setDataReady,
   ]);
+}
+
+/** True when the workspace catalog can be shown (sync done or seed/mock data present). */
+export function useWorkspaceDataReady() {
+  const dataReady = useCrmStore((s) => s.dataReady);
+  const hasCatalog = useCrmStore(
+    (s) => s.leads.length > 0 || s.deals.length > 0 || s.customers.length > 0,
+  );
+  const { ready, id } = useCurrentUser();
+  return ready && !!id && (dataReady || hasCatalog);
 }
